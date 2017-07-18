@@ -101,8 +101,8 @@ def VGG16(image_holder, num_class, keep_prob, img_h, img_w):
 	fc7_drop = tf.nn.dropout(fc7, keep_prob=keep_prob, name='fc7_drop')
 
 	fc8 = fc_op(fc7_drop, name='fc8', n_out=1000)
-	fc7_drop = tf.nn.dropout(fc8, keep_prob=keep_prob, name='fc7_drop')
-	softmax = softmax_op(fc7_drop, name='softmax', n_out=num_class)
+	fc8_drop = tf.nn.dropout(fc8, keep_prob=keep_prob, name='fc8_drop')
+	softmax = softmax_op(fc8_drop, name='softmax', n_out=num_class)
 	return softmax
 
 def data_train_mine(tfrecord_path, model_path, img_size, iteration, batch_size):
